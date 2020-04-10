@@ -8,7 +8,7 @@ const reducer = (state, action) => {
         case 'DELETE_CONTACT':
             return {
                 ...state,
-                contacts: state.contacts.filter(contact => 
+                contacts: state.contacts.filter(contact =>
                     contact.id !== action.payload
                 )
             };
@@ -36,7 +36,7 @@ export class Provider extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/users')
+        axios.get(process.env.REACT_APP_USER_API_URL)
             .then(res => this.setState({ contacts:res.data }))
     }
 
